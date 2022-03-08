@@ -55,3 +55,47 @@ const posts = [
         "created": "2021-03-05"
     }
 ];
+
+
+//ELEMENTI HTML
+const containerPost = document.querySelector('.posts-list');
+
+
+for (let index = 0; index < posts.length; index++) {
+    let post = document.createElement('div');
+    post.innerHTML =
+`<div class="post">
+<div class="post__header">
+    <div class="post-meta">                    
+        <div class="post-meta__icon">
+            <img class="profile-pic" src= ${posts[index].author.image} alt="${posts[index].author.name}">                    
+        </div>
+        <div class="post-meta__data">
+            <div class="post-meta__author">${posts[index].author.name}</div>
+            <div class="post-meta__time">${posts[index].created}</div>
+        </div>                    
+    </div>
+</div>
+<div class="post__text">${posts[index].content}</div>
+<div class="post__image">
+    <img src= ${posts[index].media} alt= ${posts[index].author.name}>
+</div>
+<div class="post__footer">
+    <div class="likes js-likes">
+        <div class="likes__cta">
+            <a class="like-button  js-like-button" href="#" data-postid="1">
+                <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+                <span class="like-button__label">Mi Piace</span>
+            </a>
+        </div>
+        <div class="likes__counter">
+            Piace a <b id="like-counter-1" class="js-likes-counter">${posts[index].likes}</b> persone
+        </div>
+    </div> 
+</div>            
+</div>`;
+    containerPost.append(post);
+
+}
+
+
