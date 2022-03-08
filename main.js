@@ -60,7 +60,6 @@ const posts = [
 //ELEMENTI HTML
 const containerPost = document.querySelector('.posts-list');
 
-
 for (let index = 0; index < posts.length; index++) {
     let post = document.createElement('div');
     post.innerHTML =
@@ -95,7 +94,17 @@ for (let index = 0; index < posts.length; index++) {
 </div>            
 </div>`;
     containerPost.append(post);
-
 }
+
+let btnLike = document.querySelectorAll('.like-button')
+let arrayLike = [...btnLike]
+for (let index = 0; index < arrayLike.length; index++) {
+    arrayLike[index].addEventListener('click', putLike)   
+}
+function putLike(){
+    this.classList.toggle('like-button--liked');
+    event.preventDefault();
+}
+
 
 
