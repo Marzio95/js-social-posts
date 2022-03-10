@@ -63,7 +63,7 @@ const containerPost = document.querySelector('.posts-list');
 for (let index = 0; index < posts.length; index++) {
     let post = document.createElement('div');
     post.innerHTML =
-`<div class="post">
+        `<div class="post">
 <div class="post__header">
     <div class="post-meta">                    
         <div class="post-meta__icon">
@@ -96,15 +96,42 @@ for (let index = 0; index < posts.length; index++) {
     containerPost.append(post);
 }
 
-let btnLike = document.querySelectorAll('.like-button')
-let arrayLike = [...btnLike]
+let like = document.querySelectorAll('.js-likes-counter');
+console.log(like);
+let arrayLikeCounter = [...like];
+console.log(arrayLikeCounter);
+let btnLike = document.querySelectorAll('.like-button');
+let arrayLike = [...btnLike];
+
 for (let index = 0; index < arrayLike.length; index++) {
-    arrayLike[index].addEventListener('click', putLike)   
+
+    arrayLike[index].addEventListener('click', function (event) {
+
+        if (this.classList.contains('like-button--liked')) {
+            this.classList.remove('like-button--liked');
+            event.preventDefault();
+            arrayLikeCounter[index].innerHTML--;
+            console.log(arrayLikeCounter[index]);
+        } else {
+            this.classList.add('like-button--liked');
+            event.preventDefault();
+            arrayLikeCounter[index].innerHTML++;
+            console.log(arrayLikeCounter[index]);
+        }
+
+    })
 }
-function putLike(){
-    this.classList.toggle('like-button--liked');
-    event.preventDefault();
-}
+
+    
 
 
 
+
+
+
+
+
+// function putLike(event){
+//     this.classList.toggle('like-button--liked');
+//     event.preventDefault();
+// }
